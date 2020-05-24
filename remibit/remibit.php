@@ -78,7 +78,7 @@ class RemiBit extends PaymentModule
             $transactionKey     = strval(Tools::getValue('TRANSACTION_KEY'));
             $signatureKey       = strval(Tools::getValue('SIGNATURE_KEY'));
             $md5Hash            = strval(Tools::getValue('MD5_HASH'));
-            $endPoint           = strval(Tools::getValue('GETAWAY_URL'));
+            $endPoint           = strval(Tools::getValue('GATEWAY_URL'));
 
 //           Message valid login id
             if (
@@ -131,9 +131,9 @@ class RemiBit extends PaymentModule
                 empty($endPoint) ||
                 !Validate::isGenericName($endPoint)
             ) {
-                $output .= $this->displayError($this->l('Invalid End Point value'));
+                $output .= $this->displayError($this->l('Invalid Endpoint URL value'));
             } else {
-                Configuration::updateValue('GETAWAY_URL', $endPoint);
+                Configuration::updateValue('GATEWAY_URL', $endPoint);
                 $checkValid = false;
             }
 
@@ -194,7 +194,7 @@ class RemiBit extends PaymentModule
         $helper->fields_value['TRANSACTION_KEY']    = Configuration::get('TRANSACTION_KEY');
         $helper->fields_value['SIGNATURE_KEY']      = Configuration::get('SIGNATURE_KEY');
         $helper->fields_value['MD5_HASH']           = Configuration::get('MD5_HASH');
-        $helper->fields_value['GETAWAY_URL']        = Configuration::get('GETAWAY_URL')!='' ? Configuration::get('GETAWAY_URL') : 'https://app.remibit.com/pay';
+        $helper->fields_value['GATEWAY_URL']        = Configuration::get('GATEWAY_URL')!='' ? Configuration::get('GATEWAY_URL') : 'https://app.remibit.com/pay';
         return $helper->generateForm($fieldsForm);
     }
 
@@ -231,8 +231,8 @@ class RemiBit extends PaymentModule
                     'required' => true
                 ],[
                     'type'  => 'text',
-                    'label' => $this->l('End Point'),
-                    'name'  => 'GETAWAY_URL',
+                    'label' => $this->l('Endpoint URL'),
+                    'name'  => 'GATEWAY_URL',
                     'size' => 50,
                     'required' => true
                 ]

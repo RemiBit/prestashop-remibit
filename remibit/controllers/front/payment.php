@@ -129,7 +129,7 @@ class RemiBitPaymentModuleFrontController extends ModuleFrontController
             $authorize_args_array[] = "<input type='hidden' name='$key' value='$value'/>";
         }
 
-        $endpoint = Configuration::get('GETAWAY_URL');
+        $endpoint = Configuration::get('GATEWAY_URL');
 
         $loading = ' <div style="width: 100%; height: 100%;top: 50%; padding-top: 10px;padding-left: 10px;  left: 50%; transform: translate(40%, 40%)"><div style="width: 150px;height: 150px;border-top: #CC0000 solid 5px; border-radius: 50%;animation: a1 2s linear infinite;position: absolute"></div> </div> <style>*{overflow: hidden;}@keyframes a1 {to{transform: rotate(360deg)}}</style>';
         $html_form  = '<form action="'.$endpoint.'" method="post" id="authorize_payment_form">' .implode('', $authorize_args_array).'<input type="submit" id="submit_authorize_payment_form" style="display: none"/>'.$loading.'</form><script>document.getElementById("submit_authorize_payment_form").click();</script>';
