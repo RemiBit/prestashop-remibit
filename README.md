@@ -11,7 +11,7 @@ INSTALLATION AND CONFIGURATION
 
 ## Module Download
 
-* Get the plugin from prestashop-remibit github Releases repository https://github.com/RemiBit/prestashop-remibit/releases
+* Get the plugin from prestashop-remibit github Releases repository https://github.com/RemiBit/prestashop-remibit/releases/latest
 * Right click `prestashop-remibit.zip` and save it on your computer
 
 
